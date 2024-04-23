@@ -12,8 +12,8 @@ title                    : "Personal Page"
 title_separator          : "-"
 name                     : &name "Wenxuan Ou"
 description              : &description "personal description"
-url                      : "https://wenxuanou.github.io"
-baseurl                  : ""
+url                      : "https://wenxuanou.github.io/"
+baseurl                  : "/blog"
 repository               : "https://github.com/wenxuanou"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
