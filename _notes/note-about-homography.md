@@ -18,7 +18,7 @@ As for the problem I encountered, I was given camera calibration matrices to pro
 Math Formulas
 ======
 
-I actually don't like the description about homography on wikipedia as they make things too complicated. The best mathematical explanation about homography I found is this on [this website](https://towardsdatascience.com/estimating-a-homography-matrix-522c70ec4b2c).
+I actually don't like the description about homography on wikipedia as they make things too complicated. The best mathematical explanation about homography I found is on [this website](https://towardsdatascience.com/estimating-a-homography-matrix-522c70ec4b2c).
 
 To begin with, we need to know the calibration parameters of our cameras. Since we have multiple cameras taking pictures, we need to know their relative positions, focal lengths, and photo image sizes. Color is a totally different problem, so we just assume all the cameras have set to use the same color setting. 
 
@@ -58,8 +58,38 @@ $$
 \textbf{p}_{i} = C_{int} C_{ext} \textbf{p}_{w}
 $$
 
-However, linear algebra tells us that we are not allowed to do so. We have to adjust the matrices a little bit to make the math work.
+However, depending on what kind of result we want, we need to adjust the matrices to make linear algebra works. In my case, I want to get a bird-eye-view image, so I need to transform pixel from different camera images to a <b>zero-height</b> plane in world, which is the ground. Hence, the transform will become:
 
+$$
+\begin{bmatrix}
+  kx_{i} \\
+  ky_{i} \\
+  k \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+  f_{x} & 0 \frac{w}{2} \\
+  0 & f_{y} & \frac{h}{2} \\
+  0 & 0 & 1 \\
+\end{bmatrix}
+\[
+  \left[
+    \begin{array}{ccc|c}
+      r_{11} & r_{12} & r_{13} & T_{x} \\
+      r_{21} & r_{22} & r_{23} & T_{y} \\
+      r_{31} & r_{32} & r_{33} & T_{z} \\
+    \end{array}
+  \right]
+\]
+\begin{bmatrix}
+  x_{w} \\
+  y_{w} \\
+  0 \\
+  1 \\
+\end{bmatrix}
+$$
+
+The last row of extrinsic matrix is dropped since we are not doing an affine transform. The resulting point in image is scaled by some arbitrary "depth" value `k`. By normalizing the `x` , `y` with `k`, we can natrually project the pixels on the image plane by distance.
 
 
 Code and Implementation
@@ -108,7 +138,7 @@ def convertBEV(images, extrinsics, intrinsics, output_size, bev_area):
         # compute image2BEV pixel mapping
         x, y = getMapping(extrinsics[i, :, :], intrinsics[i, :, :], bev_area, output_size)
 
-        # remap image
+        # remap the image
         image = cv2.remap(image_buffer, x, y
                           interpolation=cv2.INTER_NEAREST,
                           borderValue=[0, 0, 0, 0])
@@ -117,6 +147,7 @@ def convertBEV(images, extrinsics, intrinsics, output_size, bev_area):
         canvas = cv2.addWeighted(canvas, 1, image, 0.5) # alpha blending
 
     return canvas
+
 
 def getMapping(camera2ego, camera2image, bev_area=None, output_size=None, Z=0):
     """
