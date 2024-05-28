@@ -1,7 +1,7 @@
 ---
 title: 'About homography'
 date: 2024-05-28
-permalink: /study-note/2024/05/about-homography/
+permalink: /notes/2024/05/about-homography/
 tags:
   - study note
 ---
