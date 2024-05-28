@@ -1,9 +1,9 @@
 ---
 title: 'About homography'
-date: 2024-05-25
-permalink: /posts/2024/05/about-homography/
+date: 2024-05-28
+permalink: /study-note/2024/05/about-homography/
 tags:
-  - study notes
+  - study note
 ---
 
 Recently I came across an image homography problem during the work. I have studied homography long ago on my sophomore image processing class, but honestly, I have never really thorougly understand the implementation details of the algorithm. I think this is a good time to write them down as a note on my website.
