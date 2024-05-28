@@ -12,7 +12,7 @@ title                    : "Personal Page"
 title_separator          : "-"
 name                     : &name "Wenxuan Ou"
 description              : &description "personal description"
-url                      : "https://wenxuanou.github.io/"
+url                      : "https://wenxuanou.github.io"
 baseurl                  : #""
 repository               : "https://github.com/wenxuanou"
 
