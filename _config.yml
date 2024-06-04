@@ -235,17 +235,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _notes
-  - scope:
-      path: ""
-      type: notes
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
 
 
 # Sass/SCSS
