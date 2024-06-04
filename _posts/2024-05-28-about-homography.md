@@ -1,9 +1,11 @@
 ---
 title: 'About homography'
-date: 2024-05-25
+date: 2024-05-28
 permalink: /posts/2024/05/about-homography/
+categories:
+  - Study Note
 tags:
-  - study notes
+  - computer graphics
 ---
 
 Recently I came across an image homography problem during the work. I have studied homography long ago on my sophomore image processing class, but honestly, I have never really thorougly understand the implementation details of the algorithm. I think this is a good time to write them down as a note on my website.
@@ -27,11 +29,12 @@ Calibration parameters of a camera come in two parts: the extrinsic parameters, 
 $$
 \displaylines{
   C_{ext} = 
-  \begin{array}{c|c}
-    R & T \\
-  \end{array} 
-  = 
-  \[
+  \left[
+    \begin{array}{c|c}
+      R & T \\
+    \end{array} 
+  \right]
+  =
     \left[
       \begin{array}{ccc|c}
         r_{11} & r_{12} & r_{13} & T_{x} \\
@@ -39,8 +42,7 @@ $$
         r_{31} & r_{32} & r_{33} & T_{z} \\
         0 & 0 & 0 & 1 \\
       \end{array}
-    \right]
-  \] \\\
+    \right] \\\
   C_{int} = 
   \begin{bmatrix}
     f_{x} & 0 \frac{w}{2} \\
@@ -72,15 +74,13 @@ $$
   0 & f_{y} & \frac{h}{2} \\
   0 & 0 & 1 \\
 \end{bmatrix}
-\[
-  \left[
-    \begin{array}{ccc|c}
-      r_{11} & r_{12} & r_{13} & T_{x} \\
-      r_{21} & r_{22} & r_{23} & T_{y} \\
-      r_{31} & r_{32} & r_{33} & T_{z} \\
-    \end{array}
-  \right]
-\]
+\left[
+  \begin{array}{ccc|c}
+    r_{11} & r_{12} & r_{13} & T_{x} \\
+    r_{21} & r_{22} & r_{23} & T_{y} \\
+    r_{31} & r_{32} & r_{33} & T_{z} \\
+  \end{array}
+\right]
 \begin{bmatrix}
   x_{w} \\
   y_{w} \\

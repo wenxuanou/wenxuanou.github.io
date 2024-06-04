@@ -1,19 +1,16 @@
 ---
 layout: archive
-permalink: /study-note/
+permalink: /notes/
 title: "Study notes"
 author_profile: true
 redirect_from:
-  - /wordpress/study-notes/
+  - /wordpress/notes/
 ---
 
 {% include base_path %}
-{% capture written_year %}'None'{% endcapture %}
-{% for note in site.notes %}
-  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-  {% if year != written_year %}
-    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
-    {% capture written_year %}{{ year }}{% endcapture %}
-  {% endif %}
+{% assign posts = site.posts | where: "categories", "Study Note" %}
+
+<h2 id="study-note" class="archive__subtitle">Study Note</h2>
+{% for post in posts %}
   {% include archive-single.html %}
 {% endfor %}

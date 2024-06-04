@@ -1,11 +1,11 @@
 # main links links
-main:
-  - title: "Study Notes"
-    url: /stuyd-note/
-        
+main:        
   - title: "Blog Posts"
     url: /year-archive/
     
+  - title: "Study Notes"
+    url: /notes/
+
   - title: "CV"
     url: /cv/
     
