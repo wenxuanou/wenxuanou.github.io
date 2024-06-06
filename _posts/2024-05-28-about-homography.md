@@ -45,7 +45,7 @@ $$
     \right] \\\
   C_{int} = 
   \begin{bmatrix}
-    f_{x} & 0 \frac{w}{2} \\
+    f_{x} & 0 & \frac{w}{2} \\
     0 & f_{y} & \frac{h}{2} \\
     0 & 0 & 1 \\
   \end{bmatrix} \\\
@@ -70,7 +70,7 @@ $$
 \end{bmatrix}
 =
 \begin{bmatrix}
-  f_{x} & 0 \frac{w}{2} \\
+  f_{x} & 0 & \frac{w}{2} \\
   0 & f_{y} & \frac{h}{2} \\
   0 & 0 & 1 \\
 \end{bmatrix}
