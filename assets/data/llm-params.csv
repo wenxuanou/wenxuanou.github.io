@@ -1,4 +1,4 @@
-model,org,Deployment,total_params,active_params,released,note
+model,org,deployment,total_params,active_params,released,note
 Gemma 2 2B,Google,Local,2.6,,2024-06,dense
 Qwen2.5-3B,Alibaba,Local,3.1,,2024-09,dense
 Phi-3-mini,Microsoft,Local,3.8,,2024-04,dense

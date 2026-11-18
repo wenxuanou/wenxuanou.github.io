@@ -725,19 +725,19 @@ function pickColumn(columns, preferred, patterns, what) {
  */
 export function rowsToModels(rows, spec = {}) {
   if (!Array.isArray(rows) || rows.length === 0) {
-    return { models: [], scenarios: [], columns: {}, extras: [] };
+    return { models: [], deployment: [], columns: {}, extras: [] };
   }
   const columns = Object.keys(rows[0] || {});
-  const nameColumn = pickColumn(columns, spec.label, [/^model$/i, /^name$/i, /模型/], "模型名");
-  const totalColumn = pickColumn(columns, spec.x, [/total.*param/i, /^params?$/i, /^size$/i, /参数/], "参数量");
-  const activeColumn = pickColumn(columns, (spec.y && spec.y[0]) || "", [/active.*param/i, /激活/], "激活参数量");
-  const scenarioColumn = pickColumn(columns, spec.series, [/scenario/i, /category/i, /domain/i, /场景/], "场景");
+  const nameColumn = pickColumn(columns, spec.label, [/^model$/i, /^name$/i, /model/], "Model Name");
+  const totalColumn = pickColumn(columns, spec.x, [/total.*param/i, /^params?$/i, /^size$/i, /param/], "Parameters");
+  const activeColumn = pickColumn(columns, (spec.y && spec.y[0]) || "", [/active.*param/i, /active_param/], "Active Parameters");
+  const deploymentColumn = pickColumn(columns, spec.series, [/deployment/i, /category/i, /domain/i, /deployment/], "Deployment");
 
   if (!totalColumn) {
     throw new Error("找不到参数量列；可用列：" + columns.join("、"));
   }
 
-  const used = new Set([nameColumn, totalColumn, activeColumn, scenarioColumn].filter(Boolean));
+  const used = new Set([nameColumn, totalColumn, activeColumn, deploymentColumn].filter(Boolean));
   const extras = columns.filter((column) => !used.has(column));
 
   const models = rows
@@ -748,7 +748,7 @@ export function rowsToModels(rows, spec = {}) {
         name: nameColumn ? String(row[nameColumn] === null ? "未命名" : row[nameColumn]) : "模型 " + (index + 1),
         total,
         active: activeColumn && typeof row[activeColumn] === "number" ? row[activeColumn] : null,
-        scenario: scenarioColumn && row[scenarioColumn] !== null ? String(row[scenarioColumn]) : "未分组",
+        deployment: deploymentColumn && row[deploymentColumn] !== null ? String(row[deploymentColumn]) : "未分组",
         extras: extras.map((column) => ({ label: column, value: row[column] })),
       };
     })
@@ -758,17 +758,17 @@ export function rowsToModels(rows, spec = {}) {
     throw new Error("参数量列「" + totalColumn + "」里没有有效的正数");
   }
 
-  const scenarios = [];
+  const deployment = [];
   models.forEach((model) => {
-    if (!scenarios.includes(model.scenario)) {
-      scenarios.push(model.scenario);
+    if (!deployment.includes(model.deployment)) {
+      deployment.push(model.deployment);
     }
   });
 
   return {
     models,
-    scenarios,
-    columns: { name: nameColumn, total: totalColumn, active: activeColumn, scenario: scenarioColumn },
+    deployment,
+    columns: { name: nameColumn, total: totalColumn, active: activeColumn, deployment: deploymentColumn },
     extras,
   };
 }
@@ -859,7 +859,7 @@ export function buildTimelineScene(data, spec = {}, options = {}) {
   const theme = options.theme || THEMES.light;
   const highlight = Number.isInteger(options.highlight) ? options.highlight : -1;
   const models = data.models || [];
-  const scenarios = data.scenarios || [];
+  const deployment = data.deployment || [];
 
   const totals = models.map((model) => model.total);
   const minTotal = Math.min(...totals);
@@ -868,7 +868,7 @@ export function buildTimelineScene(data, spec = {}, options = {}) {
   const logMax = Math.max(Math.ceil(Math.log10(maxTotal)), logMin + 1);
   const span = logMax - logMin;
 
-  const colorOf = new Map(scenarios.map((name, index) => [name, PALETTE[index % PALETTE.length]]));
+  const colorOf = new Map(deployment.map((name, index) => [name, PALETTE[index % PALETTE.length]]));
 
   const margin = { left: 62, right: 26, top: spec.title ? 50 : 16 };
   // 竖排模型名是向上生长的，标签带高度按最长名字算，避免和标题打架
@@ -923,12 +923,12 @@ export function buildTimelineScene(data, spec = {}, options = {}) {
     return {
       index: model.index,
       name: model.name,
-      scenario: model.scenario,
+      deployment: model.deployment,
       total: model.total,
       active: model.active,
       ratio,
       cx,
-      color: colorOf.get(model.scenario) || PALETTE[0],
+      color: colorOf.get(model.deployment) || PALETTE[0],
       highlight: isHot,
       extras: model.extras,
       bar: { x: cx - barW / 2, y: top, width: barW, height: totalHeight },
@@ -942,8 +942,8 @@ export function buildTimelineScene(data, spec = {}, options = {}) {
   const bandHeight = 19;
   const bandGap = 7;
   const bandsTop = plot.y1 + 46;
-  const bands = scenarios.map((name, index) => {
-    const members = geometry.filter((model) => model.scenario === name);
+  const bands = deployment.map((name, index) => {
+    const members = geometry.filter((model) => model.deployment === name);
     const xs = members.map((model) => model.cx);
     let x0 = Math.min(...xs) - barWidth / 2 - 6;
     let x1 = Math.max(...xs) + barWidth / 2 + 6;
@@ -1387,7 +1387,7 @@ function showTimelineTooltip(record, index) {
 
   tooltip.textContent = "";
   tooltipTitle(tooltip, model.name);
-  tooltipRow(tooltip, { color: model.color, text: "Deployment：" + model.scenario, meta: true });
+  tooltipRow(tooltip, { color: model.color, text: "Deployment：" + model.deployment, meta: true });
   tooltipRow(tooltip, { text: "Total parameters：" + formatParams(model.total) });
   if (model.ratio !== null) {
     const percent = (model.ratio * 100).toFixed(model.ratio < 0.1 ? 1 : 0);
