@@ -1387,12 +1387,12 @@ function showTimelineTooltip(record, index) {
 
   tooltip.textContent = "";
   tooltipTitle(tooltip, model.name);
-  tooltipRow(tooltip, { color: model.color, text: "场景：" + model.scenario, meta: true });
-  tooltipRow(tooltip, { text: "总参数量：" + formatParams(model.total) });
+  tooltipRow(tooltip, { color: model.color, text: "Deployment：" + model.scenario, meta: true });
+  tooltipRow(tooltip, { text: "Total parameters：" + formatParams(model.total) });
   if (model.ratio !== null) {
     const percent = (model.ratio * 100).toFixed(model.ratio < 0.1 ? 1 : 0);
     tooltipRow(tooltip, {
-      text: "激活参数：" + formatParams(model.active) + "（" + percent + "%）",
+      text: "Activated parameters：" + formatParams(model.active) + "（" + percent + "%）",
     });
   }
   model.extras.forEach((extra) => {
@@ -1628,7 +1628,7 @@ async function setup(element) {
     return;
   }
 
-  setStatus(element, "正在加载数据…");
+  setStatus(element, "Loading data…");
   const record = {
     element,
     spec,
@@ -1670,7 +1670,7 @@ async function setup(element) {
     if (window.console) {
       console.error("[data-figure] " + spec.src, error);
     }
-    setStatus(element, (error && error.message) || "图表渲染失败。", {
+    setStatus(element, (error && error.message) || "Failed to render chart.", {
       state: "error",
       href: spec.src,
     });

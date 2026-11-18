@@ -56,9 +56,9 @@
      data-show-legend="{{ include.legend | default: 'true' | escape }}"
      data-state="loading"
      aria-busy="true">
-  <p class="data-figure__status">正在加载数据…</p>
+  <p class="data-figure__status">Loading data…</p>
 </div>
-<noscript><p class="data-figure__status">此图表需要启用 JavaScript。数据文件：<a href="{{ df_src | escape }}">下载原始数据</a></p></noscript>
+<!--<noscript><p class="data-figure__status">此图表需要启用 JavaScript。数据文件：<a href="{{ df_src | escape }}">下载原始数据</a></p></noscript>-->
 <script type="module" src="{{ '/assets/js/data-figure.js' | relative_url }}"></script>
 {%- if include.caption %}
 <figcaption>{{ include.caption }}</figcaption>
