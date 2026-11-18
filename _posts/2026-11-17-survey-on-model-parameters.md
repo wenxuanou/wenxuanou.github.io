@@ -7,7 +7,19 @@ tags:
 ---
 
 
-
+{% include components/data-figure.html
+   id="llm-params"
+   src="/assets/data/llm-params.csv"
+   type="timeline"
+   x="total_params"
+   y="active_params"
+   series="scenario"
+   label="model"
+   title="ML Model Parameters"
+   xlabel="parameters in log scale"
+   height="470"
+   caption="Activation parameter amount is labeled with saturated color for MoE models. Below is model applications." 
+%}
 
 
 
