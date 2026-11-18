@@ -13,7 +13,7 @@ tags:
    type="timeline"
    x="total_params"
    y="active_params"
-   series="scenario"
+   series="deployment"
    label="model"
    title="ML Model Parameters"
    xlabel="parameters in log scale"
