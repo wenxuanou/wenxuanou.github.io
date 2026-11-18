@@ -1,14 +1,14 @@
-model,org,scenario,total_params,active_params,released,note
-Gemma 2 2B,Google,端侧,2.6,,2024-06,dense 轻量模型
-Qwen2.5-3B,阿里,端侧,3.1,,2024-09,dense 轻量模型
-Phi-3-mini,Microsoft,端侧,3.8,,2024-04,dense 轻量模型
-Mistral 7B,Mistral AI,通用,7.2,,2023-09,dense 基线
-Llama 3.1 70B,Meta,通用,70,,2024-07,dense 开源旗舰
-Mixtral 8x22B,Mistral AI,通用,141,39,2024-04,MoE 稀疏模型
-GPT-3,OpenAI,通用,175,,2020-05,历史基线 闭源
-DeepSeek-V3,深度求索,通用,671,37,2024-12,MoE 稀疏模型
-Kimi K2,月之暗面,通用,1000,32,2025-07,MoE 万亿级
-DeepSeek-Coder-V2-Lite,深度求索,代码,15.7,2.4,2024-06,MoE 代码模型
-Qwen2.5-Coder-32B,阿里,代码,32.5,,2024-11,dense 代码模型
-GLM-4.5-Air,智谱,推理,106,12,2025-07,MoE 推理模型
-Qwen3-235B-A22B,阿里,推理,235,22,2025-04,MoE 推理模型
+model,org,Deployment,total_params,active_params,released,note
+Gemma 2 2B,Google,Local,2.6,,2024-06,dense
+Qwen2.5-3B,Alibaba,Local,3.1,,2024-09,dense
+Phi-3-mini,Microsoft,Local,3.8,,2024-04,dense
+Mistral 7B,Mistral AI,Local,7.2,,2023-09,dense
+Llama 3.1 70B,Meta,Local,70,,2024-07,dense
+Mixtral 8x22B,Mistral AI,Cloud,141,39,2024-04,MoE
+GPT-3,OpenAI,Cloud,175,,2020-05,Close sourced
+DeepSeek-V3,Deepseek,Cloud,671,37,2024-12,MoE
+Kimi K2,Moonshot.AI,Cloud,1000,32,2025-07,MoE
+DeepSeek-Coder-V2-Lite,Deepseek,Cloud,15.7,2.4,2024-06,MoE
+Qwen2.5-Coder-32B,Alibaba,Cloud,32.5,,2024-11,dense
+GLM-4.5-Air,Z.ai,Cloud,106,12,2025-07,MoE
+Qwen3-235B-A22B,Alibaba,Cloud,235,22,2025-04,MoE
