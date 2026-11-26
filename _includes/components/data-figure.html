@@ -1,0 +1,66 @@
+{%- comment -%}
+  交互式数据图表组件（数据来自仓库内的 CSV / JSON 文件，零外部依赖）。
+
+  用法：在 .md 帖子里顶格写一行 include 标签（不要缩进，也不要放进代码块），
+  第一个参数是组件路径 components/data-figure.html，其余参数如下。
+
+  参数：id / src / type(timeline|line|bar|scatter|area) / label / x / y / series /
+        sort / title / xlabel / ylabel / caption / height / legend
+
+  type="timeline" 时：label=模型名列，x=总参数量列（单位十亿），y=激活参数量列（可空），
+  series=应用场景列；柱子按对数轴排布，MoE 用深浅两段表示激活/总参数量。
+{%- endcomment -%}
+{%- assign df_src = include.src | relative_url -%}
+{%- assign df_height = include.height | default: 420 -%}
+{%- assign df_id = include.id | default: include.src | default: "figure" | slugify -%}
+<figure class="data-figure">
+<style>
+  .data-figure{margin:1.75em 0 2.25em}
+  .data-figure__chart{position:relative;width:100%;min-height:320px;cursor:crosshair}
+  .data-figure__chart[data-scroll="true"]{overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+  .data-figure__chart[data-scroll="true"]::-webkit-scrollbar{height:8px}
+  .data-figure__chart[data-scroll="true"]::-webkit-scrollbar-thumb{background:rgba(128,128,128,.45);border-radius:4px}
+  .data-figure__chart[data-scroll="true"]::-webkit-scrollbar-track{background:transparent}
+  .data-figure__chart svg{font-family:inherit;user-select:none}
+  .data-figure__status{margin:0;padding:1.5em 0;font-size:.9em;color:var(--global-text-color,#494e52);opacity:.75}
+  .data-figure__chart[data-state="error"]{border:1px dashed currentColor;border-radius:4px;padding:0 1em}
+  .data-figure__chart[data-state="error"] .data-figure__status{color:#b3261e;opacity:1}
+  .data-figure__chart[data-state="empty"] .data-figure__status{opacity:.9}
+  .data-figure__tooltip{position:absolute;z-index:5;min-width:110px;max-width:280px;padding:.45em .6em;border-radius:4px;
+    font-size:12px;line-height:1.55;pointer-events:none;background:rgba(255,255,255,.96);color:#2a3f5f;
+    box-shadow:0 2px 10px rgba(0,0,0,.16)}
+  .data-figure__tooltip[hidden]{display:none}
+  .data-figure__tooltip-title{font-weight:600;margin-bottom:.1em}
+  .data-figure__tooltip-row{display:flex;align-items:center;gap:.4em;white-space:nowrap}
+  .data-figure__tooltip-meta{opacity:.72}
+  .data-figure__tooltip-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+  html[data-theme="dark"] .data-figure__tooltip{background:rgba(24,24,24,.96);color:#f2f5fa;
+    box-shadow:0 2px 12px rgba(0,0,0,.5)}
+  .data-figure figcaption{margin-top:.75em;font-size:.85em;color:var(--global-text-color,#494e52);opacity:.8}
+  .data-figure figcaption a{text-decoration:underline}
+  @media print{.data-figure__chart{break-inside:avoid}}
+</style>
+<div class="data-figure__chart"
+     id="data-figure-{{ df_id | escape }}"
+     data-src="{{ df_src | escape }}"
+     data-type="{{ include.type | default: 'line' | escape }}"
+     data-x="{{ include.x | escape }}"
+     data-y="{{ include.y | escape }}"
+     data-series="{{ include.series | escape }}"
+     data-sort="{{ include.sort | default: 'file' | escape }}"
+     data-label="{{ include.label | escape }}"
+     data-title="{{ include.title | escape }}"
+     data-xlabel="{{ include.xlabel | escape }}"
+     data-ylabel="{{ include.ylabel | escape }}"
+     data-height="{{ df_height | escape }}"
+     data-show-legend="{{ include.legend | default: 'true' | escape }}"
+     data-state="loading"
+     aria-busy="true">
+  <p class="data-figure__status">Loading data…</p>
+</div>
+<!--<noscript><p class="data-figure__status">此图表需要启用 JavaScript。数据文件：<a href="{{ df_src | escape }}">下载原始数据</a></p></noscript>-->
+<script type="module" src="{{ '/assets/js/data-figure.js' | relative_url }}"></script>
+{%- if include.caption %}
+<figcaption>{{ include.caption }}</figcaption>
+{%- endif %}
+</figure>
