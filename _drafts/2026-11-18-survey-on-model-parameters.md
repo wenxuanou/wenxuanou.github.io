@@ -6,7 +6,7 @@ tags:
   - machine learning
 ---
 
-I did a small little survey on popular models about their parameters and deployment methods/requirements. I only consider the version of largest parameters of one's kind without quantization. Specs of close-sourced models are estimated. 
+I did a small little survey on popular models about their parameters and deployment methods/requirements. I only consider the version of largest parameters of one's kind and without quantization (full precision). Specs of close-sourced models are estimated. 
 
 The first version of the table includes models available until 2026-11. The table will update later on.
 
