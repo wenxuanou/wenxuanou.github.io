@@ -1,48 +1,48 @@
 model,org,vram,deployment,total_params,active_params,released,type,note
-LLaMA-65B,Meta,130,local,65,,Feb-23,text,dense
-Llama-4-Maverick,Meta,800,local,400,17,Apr-25,vision,MoE
-Llama-2-70B,Meta,140,local,70,,Jul-23,text,dense
-Llama-3-70B,Meta,140,local,70,,Apr-24,text,dense
-Llama-3.1-405B,Meta,810,cloud,405,,Jul-24,text,dense
-Llama-3.3-70B,Meta,140,local,70,,Dec-24,text,dense
-Muse Spark Open,Meta,1632,cloud,816,42,Oct-26,multimodel,MoE
-Mistral-7B,Mistral AI,15,local,7.2,,Sep-23,text,dense
-Mixtral-8x7B,Mistral AI,94,local,46.7,12.9,Dec-23,text,MoE
-Mixtral-8x22B,Mistral AI,283,cloud,141,39,Apr-24,text,MoE
-Gemma-7B,Google,17,local,8.5,,Feb-24,text,dense
-Gemma-2-27B,Google,54,local,27,,Jun-24,text,dense
-Gemma-3-27B,Google,54,local,27,,Mar-25,vision,dense
-Gemini-2.5-Pro,Google,2048,cloud,600,,Mar-25,multimodel,close-sourced
-Gemini-3-Pro,Google,2000,cloud,1000,,Nov-25,multimodel,close-sourced
-Claude-3-Opus,Anthropic,250,cloud,100,,Mar-24,multimodel,close-sourced
-Claude-3.5-Sonnet,Anthropic,250,cloud,100,,Jun-24,multimodel,close-sourced
-Claude-3.7-Sonnet,Anthropic,300,cloud,150,,Feb-25,multimodel,close-sourced
-Claude-Opus-4,Anthropic,1024,cloud,500,,May-25,multimodel,close-sourced
-Claude-Opus-5.5,Anthropic,1200,cloud,600,,Sep-26,multimodel,close-sourced
-Grok-1,xAI,630,cloud,314,79,Mar-24,text,MoE
-DeepSeek-V2,DeepSeek,472,local,236,21,May-24,text,MoE
-DeepSeek-V3,DeepSeek,1331,cloud,671,37,Dec-24,text,MoE
-DeepSeek-R1,DeepSeek,1331,cloud,671,37,Jan-25,text,MoE
-DeepSeek-V4.1-Flash,DeepSeek,1104,cloud,552,16,Sep-26,multimodel,MoE
-DeepSeek-V4-Pro,DeepSeek,3200,cloud,1600,49,Apr-26,text,MoE
-Qwen2.5-72B,Alibaba,145,local,72,,Sep-24,text,dense
-Qwen3-235B-A22B,Alibaba,470,local,235,22,Apr-25,text,MoE
-Qwen3.5-397B-A17B,Alibaba,794,local,397,17,Feb-26,multimodel,MoE
-Qwen3.6-35B-A3B,Alibaba,70,local,35,3,Apr-26,multimodel,MoE
-Qwen3.8-2.4T-A95B,Alibaba,4800,cloud,2400,95,Aug-26,multimodel,MoE
-Qwen4-Max,Alibaba,4800,cloud,2400,,Nov-26,multimodel,MoE
-GPT-3,OpenAI,350,cloud,175,,May-20,text,close-sourced
-GPT-3.5-Turbo,OpenAI,350,cloud,175,,Mar-23,text,close-sourced
-GPT-4,OpenAI,1536,cloud,1800,280,Mar-23,multimodel,close-sourced
-GPT-4.1,OpenAI,400,cloud,300,,Apr-25,multimodel,close-sourced
-GPT-4o,OpenAI,400,cloud,200,,May-24,multimodel,close-sourced
-GPT-5,OpenAI,1024,cloud,700,,Aug-25,multimodel,close-sourced
-gpt-oss-120b,OpenAI,234,local,117,5.1,Aug-25,text,MoE
-GPT-6 Astra,OpenAI,2400,cloud,1200,,Sep-26,multimodel,close-sourced
-Kimi-K2,Moonshot AI,2048,cloud,1000,32,Jul-25,text,MoE
-Kimi-K3,Moonshot AI,5600,cloud,2800,104,Jul-26,multimodel,MoE
-ChatGLM-6B,Zhipu AI,13,local,6.2,,Mar-23,text,dense
-GLM-130B,Zhipu AI,260,local,130,,Aug-22,text,dense
-GLM-5.1,Zhipu AI,1488,cloud,744,40,Apr-26,text,MoE
-GLM-5.3,Zhipu AI,1488,cloud,744,40,Aug-26,text,MoE
-doubao-seed-2.0,Bytedance,470,cloud,230,23,Feb-26,text,close-sourced
+LLaMA-65B,Meta,130,local,65,,23-Feb,text,dense
+Llama-4-Maverick,Meta,800,cloud,400,17,25-Apr,vision,MoE
+Llama-2-70B,Meta,140,local,70,,23-Jul,text,dense
+Llama-3-70B,Meta,140,local,70,,24-Apr,text,dense
+Llama-3.1-405B,Meta,810,cloud,405,,24-Jul,text,dense
+Llama-3.3-70B,Meta,140,local,70,,24-Dec,text,dense
+Muse Spark Open,Meta,1632,cloud,816,42,26-Oct,multimodel,MoE
+Mistral-7B,Mistral AI,15,local,7.2,,23-Sep,text,dense
+Mixtral-8x7B,Mistral AI,94,local,46.7,12.9,23-Dec,text,MoE
+Mixtral-8x22B,Mistral AI,283,cloud,141,39,24-Apr,text,MoE
+Gemma-7B,Google,17,local,8.5,,24-Feb,text,dense
+Gemma-2-27B,Google,54,local,27,,24-Jun,text,dense
+Gemma-3-27B,Google,54,local,27,,25-Mar,vision,dense
+Gemini-2.5-Pro,Google,2048,cloud,600,,25-Mar,multimodel,close-sourced
+Gemini-3-Pro,Google,2000,cloud,1000,,25-Nov,multimodel,close-sourced
+Claude-3-Opus,Anthropic,250,cloud,100,,24-Mar,multimodel,close-sourced
+Claude-3.5-Sonnet,Anthropic,250,cloud,100,,24-Jun,multimodel,close-sourced
+Claude-3.7-Sonnet,Anthropic,300,cloud,150,,25-Feb,multimodel,close-sourced
+Claude-Opus-4,Anthropic,1024,cloud,500,,25-May,multimodel,close-sourced
+Claude-Opus-5.5,Anthropic,1200,cloud,600,,26-Sep,multimodel,close-sourced
+Grok-1,xAI,630,cloud,314,79,24-Mar,text,MoE
+DeepSeek-V2,DeepSeek,472,cloud,236,21,24-May,text,MoE
+DeepSeek-V3,DeepSeek,1331,cloud,671,37,24-Dec,text,MoE
+DeepSeek-R1,DeepSeek,1331,cloud,671,37,25-Jan,text,MoE
+DeepSeek-V4.1-Flash,DeepSeek,1104,cloud,552,16,26-Sep,multimodel,MoE
+DeepSeek-V4-Pro,DeepSeek,3200,cloud,1600,49,26-Apr,text,MoE
+Qwen2.5-72B,Alibaba,145,local,72,,24-Sep,text,dense
+Qwen3-235B-A22B,Alibaba,470,cloud,235,22,25-Apr,text,MoE
+Qwen3.5-397B-A17B,Alibaba,794,cloud,397,17,26-Feb,multimodel,MoE
+Qwen3.6-35B-A3B,Alibaba,70,local,35,3,26-Apr,multimodel,MoE
+Qwen3.8-2.4T-A95B,Alibaba,4800,cloud,2400,95,26-Aug,multimodel,MoE
+Qwen4-Max,Alibaba,4800,cloud,2400,,26-Nov,multimodel,MoE
+GPT-3,OpenAI,350,cloud,175,,20-May,text,close-sourced
+GPT-3.5-Turbo,OpenAI,350,cloud,175,,23-Mar,text,close-sourced
+GPT-4,OpenAI,1536,cloud,1800,280,23-Mar,multimodel,close-sourced
+GPT-4.1,OpenAI,400,cloud,300,,25-Apr,multimodel,close-sourced
+GPT-4o,OpenAI,400,cloud,200,,24-May,multimodel,close-sourced
+GPT-5,OpenAI,1024,cloud,700,,25-Aug,multimodel,close-sourced
+gpt-oss-120b,OpenAI,234,cloud,117,5.1,25-Aug,text,MoE
+GPT-6 Astra,OpenAI,2400,cloud,1200,,26-Sep,multimodel,close-sourced
+Kimi-K2,Moonshot AI,2048,cloud,1000,32,25-Jul,text,MoE
+Kimi-K3,Moonshot AI,5600,cloud,2800,104,26-Jul,multimodel,MoE
+ChatGLM-6B,Zhipu AI,13,local,6.2,,23-Mar,text,dense
+GLM-130B,Zhipu AI,260,cloud,130,,22-Aug,text,dense
+GLM-5.1,Zhipu AI,1488,cloud,744,40,26-Apr,text,MoE
+GLM-5.3,Zhipu AI,1488,cloud,744,40,26-Aug,text,MoE
+doubao-seed-2.0,Bytedance,470,cloud,230,23,26-Feb,text,close-sourced
